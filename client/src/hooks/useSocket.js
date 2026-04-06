@@ -17,7 +17,8 @@ export default function useSocket() {
       return;
     }
 
-    const socket = io(window.location.origin, {
+    const socketUrl = import.meta.env.VITE_API_URL || window.location.origin;
+    const socket = io(socketUrl, {
       auth: { token },
       transports: ["websocket", "polling"],
     });
