@@ -1,0 +1,235 @@
+.dashboard {
+  min-height: 100vh;
+  padding-top: 72px;
+  padding-bottom: var(--space-4xl);
+}
+
+/* Header */
+.dash-header {
+  padding: var(--space-3xl) 0 var(--space-md);
+}
+
+.dash-header .label {
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.dash-location {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: var(--space-sm);
+}
+
+/* Quick actions */
+.dash-actions {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: var(--space-md);
+  margin: var(--space-xl) 0 var(--space-2xl);
+}
+
+.dash-action-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg) var(--space-xl);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: all 0.5s var(--ease-out-expo);
+  color: var(--text-primary);
+}
+
+.dash-action-card:hover {
+  border-color: var(--border-hover);
+  background: rgba(255, 255, 255, 0.02);
+  transform: translateY(-2px);
+}
+
+.dash-action-sky {
+  border-color: var(--border-accent);
+  background: var(--accent-purple-dim);
+}
+
+.dash-action-sky:hover {
+  background: rgba(167, 139, 250, 0.1);
+  border-color: var(--accent-purple);
+}
+
+.dash-action-icon {
+  color: var(--accent-purple);
+  flex-shrink: 0;
+}
+
+.dash-action-card h3 {
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.dash-action-arrow {
+  color: var(--text-tertiary);
+  margin-left: auto;
+  flex-shrink: 0;
+  transition: transform 0.3s var(--ease-out-expo);
+}
+
+.dash-action-card:hover .dash-action-arrow {
+  transform: translateX(3px);
+  color: var(--accent-purple);
+}
+
+/* Stats */
+.dash-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  padding: var(--space-xl) 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--space-2xl);
+}
+
+.dash-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-align: center;
+}
+
+.dash-stat-val {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+/* Grid */
+.dash-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-2xl);
+}
+
+/* Sections */
+.dash-section {
+  margin-bottom: var(--space-xl);
+}
+
+.dash-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--border);
+}
+
+.dash-section-header h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* Tonight */
+.dash-tonight-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.dash-tonight-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  color: var(--text-primary);
+  transition: opacity 0.4s var(--ease-out-expo);
+}
+
+.dash-tonight-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.dash-tonight-name {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+/* Stars list */
+.dash-stars-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.dash-star-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.dash-star-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dash-star-name {
+  flex: 1;
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+/* Activity */
+.dash-activity {
+  display: flex;
+  flex-direction: column;
+}
+
+.dash-activity-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.dash-activity-icon {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background: var(--accent-purple-dim);
+  color: var(--accent-purple);
+  flex-shrink: 0;
+}
+
+/* Favorite chips */
+.dash-fav-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+@media (max-width: 768px) {
+  .dash-actions {
+    grid-template-columns: 1fr;
+  }
+  .dash-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+  .dash-grid {
+    grid-template-columns: 1fr;
+  }
+}

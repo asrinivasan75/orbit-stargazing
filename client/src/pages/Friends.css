@@ -1,0 +1,123 @@
+.friends-page {
+  min-height: 100vh;
+  padding-top: 72px;
+  padding-bottom: var(--space-4xl);
+}
+
+.friends-header {
+  padding: var(--space-3xl) 0 var(--space-xl);
+}
+
+.friends-header .label {
+  margin-bottom: var(--space-sm);
+  display: block;
+}
+
+.friends-header p {
+  margin-top: var(--space-sm);
+}
+
+/* Add friend */
+.add-friend {
+  padding: var(--space-lg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-3xl);
+}
+
+.add-friend-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.add-friend-row .input { flex: 1; }
+
+.add-friend-msg {
+  margin-top: var(--space-sm);
+}
+
+/* Section */
+.friends-section {
+  margin-bottom: var(--space-2xl);
+}
+
+.friends-section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Friend row */
+.friends-list { display: flex; flex-direction: column; }
+
+.friend-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  transition: opacity 0.4s var(--ease-out-expo);
+}
+
+.friend-avatar {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--accent-purple);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.friend-dot {
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--text-tertiary);
+  border: 2px solid var(--bg-primary);
+}
+
+.friend-dot.online {
+  background: var(--accent-green);
+  box-shadow: 0 0 8px rgba(0, 255, 106, 0.4);
+}
+
+.friend-info { flex: 1; min-width: 0; }
+
+.friend-name {
+  display: block;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.friend-status-text {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Empty */
+.friends-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-3xl);
+  text-align: center;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+}

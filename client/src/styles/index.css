@@ -1,0 +1,475 @@
+/* ============================================
+   ORBIT — Design System v2
+   Inspired by: igloo.inc, studiofreight, obys.agency
+   Typography: vw-based fluid, Space Grotesk + Inter + JetBrains Mono
+   Motion: expo easing, clip-path reveals, smooth scroll
+   ============================================ */
+
+:root {
+  /* Palette — deep space */
+  --bg-primary: #000000;
+  --bg-secondary: #060609;
+  --bg-card: #0a0a10;
+  --bg-elevated: #101018;
+  --bg-glass: rgba(8, 8, 16, 0.75);
+  --bg-glass-hover: rgba(14, 14, 28, 0.85);
+
+  --text-primary: #fffef4;
+  --text-secondary: #909090;
+  --text-tertiary: #484858;
+  --text-accent: #a78bfa;
+
+  --accent-purple: #a78bfa;
+  --accent-purple-dim: rgba(167, 139, 250, 0.12);
+  --accent-purple-glow: rgba(167, 139, 250, 0.25);
+  --accent-cyan: #67e8f9;
+  --accent-cyan-dim: rgba(103, 232, 249, 0.12);
+  --accent-blue: #4160ff;
+  --accent-green: #00ff6a;
+  --accent-green-dim: rgba(0, 255, 106, 0.12);
+  --accent-orange: #fb923c;
+  --accent-red: #f87171;
+  --accent-pink: #f472b6;
+
+  --border: rgba(255, 255, 255, 0.06);
+  --border-hover: rgba(255, 255, 255, 0.12);
+  --border-accent: rgba(167, 139, 250, 0.25);
+
+  /* Typography */
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Layout grid — Studio Freight inspired */
+  --layout-columns: 8;
+  --layout-gap: 1.6667vw;
+  --layout-margin: 1.6667vw;
+
+  /* Spacing — generous */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+  --space-4xl: 10rem;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Motion — expo easing from Studio Freight */
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 400ms;
+  --duration-slow: 800ms;
+  --duration-reveal: 1.2s;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --layout-columns: 4;
+    --layout-gap: 4.2667vw;
+    --layout-margin: 4.2667vw;
+  }
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Scrollbar — invisible by default */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* Selection */
+::selection {
+  background: var(--accent-purple);
+  color: #000;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Focus */
+:focus-visible {
+  outline: 1px solid var(--accent-purple);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   TYPOGRAPHY — Cinematic, vw-based
+   ============================================ */
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+/* Display sizes — massive, vw-based */
+.display-hero {
+  font-size: clamp(3rem, 8vw, 9rem);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.display-lg {
+  font-size: clamp(2.5rem, 5.5vw, 6rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.display-md {
+  font-size: clamp(1.8rem, 3.7vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+h1 { font-size: clamp(2rem, 4.2vw, 4rem); }
+h2 { font-size: clamp(1.5rem, 3.2vw, 2.8rem); }
+h3 { font-size: clamp(1.2rem, 2vw, 1.6rem); }
+h4 { font-size: 1rem; }
+
+/* Body text — readable */
+.body-lg { font-size: clamp(1rem, 1.3vw, 1.25rem); line-height: 1.7; }
+.body-md { font-size: clamp(0.875rem, 1.1vw, 1rem); line-height: 1.65; }
+.body-sm { font-size: clamp(0.75rem, 0.83vw, 0.85rem); line-height: 1.6; }
+
+/* Labels — uppercase, mono */
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+}
+
+/* Utility classes */
+.mono { font-family: var(--font-mono); }
+.text-secondary { color: var(--text-secondary); }
+.text-tertiary { color: var(--text-tertiary); }
+.text-accent { color: var(--accent-purple); }
+.text-cyan { color: var(--accent-cyan); }
+.text-green { color: var(--accent-green); }
+
+/* ============================================
+   GLASS MORPHISM — refined
+   ============================================ */
+
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(24px) saturate(1.2);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.glass-subtle {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+/* ============================================
+   BUTTONS — premium feel
+   ============================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0.7rem 1.4rem;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.5s var(--ease-out-expo);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--accent-purple);
+  color: #000;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px var(--accent-purple-glow);
+}
+
+.btn-lg {
+  padding: 0.9rem 2rem;
+  font-size: 0.95rem;
+}
+
+.btn-xl {
+  padding: 1.1rem 2.8rem;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 0.5rem 0.75rem;
+}
+
+.btn-ghost:hover {
+  color: var(--text-primary);
+}
+
+/* ============================================
+   INPUTS
+   ============================================ */
+
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: all 0.4s var(--ease-out-expo);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 0 3px var(--accent-purple-dim);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.input::placeholder {
+  color: var(--text-tertiary);
+}
+
+/* ============================================
+   BADGE
+   ============================================ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-radius: var(--radius-full);
+  background: var(--accent-purple-dim);
+  color: var(--accent-purple);
+}
+
+/* ============================================
+   REVEAL ANIMATIONS — clip-path based
+   ============================================ */
+
+.reveal-up {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path var(--duration-reveal) var(--ease-out-expo);
+}
+
+.reveal-up.visible {
+  clip-path: inset(0 0 0 0);
+}
+
+/* ============================================
+   LAYOUT UTILITIES
+   ============================================ */
+
+.section-padding {
+  padding: var(--space-4xl) var(--layout-margin);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--layout-margin);
+}
+
+.container-narrow {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 var(--layout-margin);
+}
+
+.container-wide {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--layout-margin);
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--layout-columns), 1fr);
+  gap: var(--layout-gap);
+}
+
+/* Divider */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ============================================
+   CANVAS & OVERLAYS
+   ============================================ */
+
+.sky-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
+
+/* Film grain noise overlay */
+.noise-overlay {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  animation: noise-drift 0.5s steps(3) infinite;
+}
+
+@keyframes noise-drift {
+  0% { transform: translate(0, 0); }
+  33% { transform: translate(-2%, -1%); }
+  66% { transform: translate(1%, 2%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Horizontal rule — glowing */
+.hr-glow {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--accent-purple-dim) 20%,
+    var(--accent-purple) 50%,
+    var(--accent-purple-dim) 80%,
+    transparent 100%
+  );
+  opacity: 0.5;
+}
+
+/* ============================================
+   LIST DIMMING — obys pattern
+   ============================================ */
+
+.dim-list:hover .dim-item {
+  opacity: 0.35;
+  transition: opacity 0.4s var(--ease-out-expo);
+}
+
+.dim-list:hover .dim-item:hover {
+  opacity: 1;
+}
+
+.dim-item {
+  transition: opacity 0.4s var(--ease-out-expo);
+}
+
+/* ============================================
+   SCROLLBAR (appears on hover near edge)
+   ============================================ */
+.scrollable::-webkit-scrollbar {
+  width: 4px;
+}
+.scrollable::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+}
+
+/* ============================================
+   RESPONSIVE TEXT
+   ============================================ */
+@media (max-width: 768px) {
+  .display-hero { font-size: clamp(2.5rem, 12vw, 4rem); }
+  .display-lg { font-size: clamp(2rem, 8vw, 3rem); }
+  .display-md { font-size: clamp(1.5rem, 6vw, 2rem); }
+  .section-padding { padding: var(--space-3xl) var(--layout-margin); }
+  .btn-xl { padding: 0.9rem 2rem; font-size: 0.9rem; }
+}
